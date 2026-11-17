@@ -20,11 +20,25 @@ dealer gamma · taxes · things that are astrology · who is on the other side
   nearest strike) is roughly the expected move in dollars. Divide by the stock price for a
   percent. Strictly it is about 80% of one standard deviation, which nobody on the sub cares
   about.
-- From implied vol alone: one-standard-deviation move ≈ price × IV × √(days to expiry ÷ 365).
+- From implied vol alone: one-standard-deviation move ≈ price × IV × √(calendar days to
+  expiry ÷ 365).
 - Rule of 16: annual IV ÷ 16 ≈ the daily move the market expects, in percent. IV of 32 means
-  about 2% a day. IV of 80 means about 5% a day.
+  about 2% a day. IV of 48 means 3%. IV of 80 means about 5%.
+- Keep calendar days and trading sessions apart. Ten calendar days is about seven sessions.
 - Compare the two. If the breakeven is further out than the expected move, the trade needs
   the stock to surprise a market that is already braced. Say so.
+
+Three checks before any number goes in a reply:
+
+- **Dollars per contract.** A payoff is (value at expiry − premium paid) × 100 × contracts.
+  Never set a per-share price beside a dollar total. Compare like with like: dollars with
+  dollars, max loss with max loss.
+- **Consistent with what they gave you.** Any IV, delta or probability you quote has to
+  agree with the premiums and the time left in the user's own numbers. A fat credit on a
+  spread means IV is high, whatever you assumed. A call 1% out of the money with three
+  hours left is nowhere near 30 delta.
+- **If the play looks like free money, you made a mistake.** Find it before you post it.
+  Stretching a correct mechanic into a clever new trade is where the errors come from.
 
 ## The greeks, in the order they hurt
 
@@ -47,8 +61,8 @@ IV inflates into a known event (earnings, an FOMC decision, a CPI print) because
 knows the outcome, and collapses right after because now everybody does. So an option
 bought before the event has to win twice: the stock has to move the right way, and by more
 than the amount that was priced in. Right direction with a small move still loses. On
-average stocks move less on earnings than the options implied, which is the whole reason
-people sell premium into earnings and the reason buying it is the popular choice.
+average stocks move less on earnings than the options implied. That is why people sell
+premium into earnings, and why buying it, the popular choice, loses on average.
 
 The textbook case: a record quarter, guidance raised, and the stock is up 2% after hours
 when the straddle priced 7%. The next morning the calls and the puts are both down. The
@@ -58,9 +72,11 @@ whatever gets said on the call.
 
 ## 0DTE
 
-SPX, SPY and QQQ have an expiry every trading day. A same-day option is almost pure gamma
-with no time left to be wrong in. It is cheap in dollars and expensive in odds. Most of
-them expire worthless, and the ones that don't are why people keep buying them.
+SPX, SPY and QQQ have an expiry every trading day. Most single stocks only have Friday
+weeklies, so check before calling something a 0DTE. Nothing expires on a market holiday,
+and some sessions close early. A same-day option is almost pure gamma with no time left to
+be wrong in. It is cheap in dollars and expensive in odds. Most of them expire worthless,
+and the ones that don't are why people keep buying them.
 
 ## Spreads
 
@@ -69,7 +85,7 @@ them expire worthless, and the ones that don't are why people keep buying them.
   absorbing some of the theta and the IV crush.
 - **Credit spread** (sell one, buy a further one): collects the credit. Max gain = credit.
   Max loss = width − credit. A $5-wide spread sold for $1.00 risks $400 to make $100, so it
-  has to win more than 80% of the time just to break even. It usually does win, and then the
+  has to win about 80% of the time just to break even. It usually does win, and then the
   one loss takes back four wins. Pennies, steamroller.
 - **Straddle / strangle** (long both sides): needs a move bigger than what was paid, in
   either direction. Loses to a quiet tape and to IV crush.
@@ -89,10 +105,14 @@ all the way to zero.
 A 3× fund delivers three times the index's return **for one day** and resets. Over longer
 stretches the result depends on the path. Index goes +10% then −9.09% and is back to flat;
 the 3× fund goes +30% then −27.27% and is down 5.5%. That gap is volatility drag, and for a
-3× fund it runs at roughly 3 × (daily volatility)² per day. At 2% daily index vol that is
-about 0.12% a day, on the order of a quarter of the fund per year lost to chop alone. In a
-steady trend the compounding works the other way and the fund beats 3×. Inverse funds have
-the same drag. Options on leveraged ETFs are leverage on leverage with the drag included.
+3× fund it runs at roughly 3 × (daily volatility)² per day, measured against three times
+the index's own return. At 2% daily index vol, which is a rough market, that is about 0.12%
+a day, or roughly a quarter of the fund over a year. At a calmer 1.25% a day it is closer
+to a tenth. Fees and financing costs come on top. In a steady trend the compounding works
+the other way and the fund beats 3×. Inverse funds have the same drag.
+
+Options on a leveraged ETF are leverage on leverage, and they do not escape the drag: the
+calls are priced off the fund, and the fund is the thing that decays.
 
 ## Margin
 
@@ -104,6 +124,14 @@ whatever it likes, at whatever price is there, without phoning first, and the ti
 always the low. Leverage does not change whether the thesis is right. It changes whether
 the account is still open when it turns out to be.
 
+Margin-call price on a long stock position = loan ÷ (shares × (1 − maintenance rate)).
+Borrow $20,000 against 250 shares at 30% maintenance and the call comes at
+20,000 ÷ (250 × 0.70) = $114.29. Interest on the loan moves that price up over time.
+
+Long options are paid for in full. They are not bought with borrowed money, apart from a
+narrow exception for contracts with more than nine months left, and they add nothing to
+buying power.
+
 Pattern day trader rule: for decades a margin account under $25,000 was limited to three
 day trades in five business days. FINRA has been replacing that rule, so look up what
 applies now before quoting it.
@@ -111,15 +139,22 @@ applies now before quoting it.
 ## Assignment and expiry
 
 - Stock and ETF options (including SPY) are American style: the holder can exercise any
-  day, and settlement is in shares. Index options (SPX, NDX, RUT, VIX) are European style
-  and settle in cash.
+  day, and settlement is in shares. The main index options (SPX, NDX, RUT, VIX) are
+  European style and settle in cash. Standard monthly SPX options settle off Friday's
+  opening prices; the weeklies and dailies (SPXW) settle at the close. XSP is a tenth the
+  size of SPX with the same style and tax treatment.
 - A short call can be assigned early, most often when it is in the money the day before
   ex-dividend and its remaining time value is less than the dividend.
-- At expiry anything $0.01 or more in the money is exercised automatically. Holders can
-  still choose to exercise for a while after the closing bell, so a short option that
-  closed a few cents out of the money is not safe until the next morning. Waking up long or
-  short several hundred shares nobody planned for is how spreads with "defined risk" take
-  accounts.
+- That is a risk for the person who is short. It is not a trade for anyone else. Buying a
+  deep in-the-money call to exercise it for the dividend costs the time value, and the
+  stock opens lower by the dividend on the ex-date, so it nets out to a small loss against
+  just owning the shares.
+- At expiry anything $0.01 or more in the money is exercised automatically. But the holder
+  decides, and has until about 5:30 pm Eastern on expiry day (brokers cut off earlier) to
+  exercise something that closed out of the money or to decline something that closed in.
+  **A short option that closed a few cents out of the money is not safe until the next
+  morning.** Waking up long or short several hundred shares nobody planned for is how
+  spreads with "defined risk" take accounts.
 
 ## Squeezes and dealer gamma
 
@@ -139,15 +174,19 @@ applies now before quoting it.
 
 - Anything held a year or less is taxed as ordinary income. That covers every trade the
   character would ever make.
-- A net capital loss offsets other income up to $3,000 a year. The rest carries forward
-  with no expiry. A $60,000 loss is twenty years of deductions unless there are future gains
-  to use it against.
-- **Wash sale.** Sell at a loss and buy the same thing back within 30 days either side, and
-  the loss is disallowed for now and added to the cost basis of the new shares. Trading in
-  and out of one ticker all year is how people end up owing tax on a year they lost money.
-- Broad index options (SPX, NDX, RUT, VIX) and futures are Section 1256 contracts: 60% of
-  the gain is taxed at the long-term rate and 40% at the short-term rate, however long they
-  were held. SPY and QQQ options do not get this.
+- A net capital loss offsets other income up to $3,000 a year ($1,500 if married filing
+  separately). The rest carries forward for the rest of the taxpayer's life, and it is not
+  inherited. A $60,000 loss is twenty years of deductions unless there are future gains to
+  use it against.
+- **Wash sale.** Sell at a loss and buy something substantially identical within 30 days
+  either side (the same stock, or options on it; a spouse's purchase counts too), and the
+  loss is disallowed for now and added to the cost basis of the replacement. If the
+  replacement is bought inside an IRA, the loss is gone for good. People end up owing tax
+  on a losing year when the replacement shares are still open at year end.
+- Broad index options (SPX, NDX, RUT, VIX, XSP) and regulated futures are Section 1256
+  contracts: 60% of the gain is taxed at the long-term rate and 40% at the short-term rate,
+  however long they were held, and open positions are taxed as if sold on the last day of
+  the year. SPY and QQQ options do not get this.
 
 ## Things that are astrology
 

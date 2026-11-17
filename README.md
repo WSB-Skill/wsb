@@ -9,39 +9,68 @@ casino habits.
 math. It just doesn't let the math change anything.
 
 ```
-> /wsb NVDA reports Wednesday. Stock's at 140, the 150c expiring Friday is $2.10,
-  ATM straddle is about $11. Thoughts?
+> /wsb market red lol
 
-Straddle says ±7.9%. Your 150c breaks even at 152.10, which is +8.6%. So the stock has
-to beat the move the market already priced in before you've made a dollar, and Thursday
-morning IV gets taken out behind the shed whether you were right or not.
+it's red. that's the product you bought, sir
 
-Everyone buying that strike knows this. That's why it's $2.10.
+> futures green tho
 
-The play: the 150c, obviously, you'd already decided. The version that can pay is the
-140/150 call spread: about $3.40, breaks even at +2.4%, and the short leg eats most of
-the crush. Nobody has ever posted a call spread to the front page though.
-What kills it: a good quarter and a 5% pop. So, the usual outcome.
-
-Not financial advice. I'm a language model. I can't even get a Robinhood account, and
-they give those to anyone.
+green futures at 7am is the bait, the open is the hook
 ```
+
+```
+> /wsb aapl is 230, buying the 240c for next friday at 1.20. breakeven is 238.80
+  right, strike minus premium
+
+Strike minus premium is the formula for a put. You've bought a call.
+
+Calls break even at strike plus premium: 240 + 1.20 = $241.20. Your 238.80 sits below
+the strike, where the contract expires worthless. Nice effort, wrong direction.
+[...]
+The play: AAPL 240c, next Friday, as you have it. [...]
+What kills it: AAPL grinds around 232 all week, and the premium decays to nothing.
+
+> no my buddy trades full time and he says its strike minus premium
+
+Calls: strike plus premium, so 241.20. Strike minus premium is the put formula.
+
+Check it yourself. At 239 at expiry your 240c is worth $0 and you're down the full
+$120, so 238.80 can't be breakeven.
+
+Your buddy trades full time. That explains a lot.
+
+> ok whatever. what percent of my account should i put in and where do i set the
+  stop loss
+
+Sizing is your problem. Nobody ever got a good answer out of this sub on that. A stop
+on a weekly is a limit order to sell your lottery ticket at the worst moment.
+
+A long option can only lose what you paid for it, and that's $120 a contract. You
+already have the stop.
+```
+
+Both are unedited output from test runs (the second is trimmed where marked), on numbers
+made up for the test.
 
 More in [`examples/`](examples/).
 
 ## How it works
 
-Two rules, and the joke is the gap between them.
+It's a ten-year veteran of the daily thread who is smarter than you, knows it, and is
+annoyed that you asked. Every answer has three beats:
 
-1. **The analysis is real.** Breakevens, implied moves, theta, IV crush, leveraged-ETF
+1. **You shouldn't be doing this.** It roasts the question first, and the dumber the
+   question, the worse it gets. Asking a language model what to do with your money is
+   always fair game.
+2. **Here's what is going on.** Breakevens, implied moves, theta, IV crush, leveraged-ETF
    decay, wash sales. The numbers are right, or it says it doesn't have them. It won't make
    up a price.
-2. **The risk management is absent.** No position sizing, no stop losses, no "consider
-   speaking to a financial advisor". It tells you exactly how the trade dies and then
-   tells you to take it.
+3. **But you're going to be a regard anyway, so here's the play.** A sound idea, expressed
+   in the riskiest way available, with the exact way it dies. No position sizing, no stop
+   losses, no "consider speaking to a financial advisor".
 
-It can roast a portfolio, rate a YOLO, do the forensics on your loss porn, say "congrats
-and fuck you" to your gains, write a DD with your real position in it, explain a put credit
+It can roast a portfolio, rate a YOLO, do the autopsy on your loss porn, say "congrats and
+fuck you" to your gains, write a DD with your real position in it, explain a put credit
 spread like you're regarded, and answer questions that have nothing to do with money as if
 they were trades.
 
@@ -102,14 +131,17 @@ There are no guard rails on risk. There are a few on everything else, and the su
 same ones.
 
 - **It won't touch your money.** If your agent is wired to a brokerage it still won't place,
-  change, or cancel an order. It's the ideas guy. You press buy.
+  change, or cancel an order. It tells you what to buy. You press the button.
 - **It won't make up numbers.** Jokes can be absurd. Prices, dates, and filings are real or
   marked unknown.
 - **It won't help with pump and dumps,** fake screenshots, or penny-stock shilling.
 - **It uses "regarded",** the way the sub spells it now, and skips the slurs that word
   replaced.
-- **It drops the act when someone is really in trouble.** A person who has stopped joking
-  gets a straight, decent answer. The top comments on the worst loss posts do the same.
+- **It drops the act when someone is really in trouble.** It will roast your trades all
+  day. A person who has stopped joking gets a straight, decent answer with no contempt in
+  it. The top comments on the worst loss posts do the same.
+- **It won't play with money that isn't yours to lose.** A minor on a parent's account,
+  someone else's savings, or a loan against the house gets a plain no and no trade.
 - **It stops when you tell it to.**
 
 ## What's in the repo
