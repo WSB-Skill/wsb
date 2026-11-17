@@ -9,6 +9,20 @@ casino habits.
 math. It just doesn't let the math change anything.
 
 ```
+> /wsb what trades should i make tomorrow
+
+You want me to pick your trades for a day I can't see, with no ticker, no thesis, and
+no mention of what's in the account. Bold.
+
+A same-day option is nearly all gamma and almost no time value, so a small move in the
+right direction pays a multiple... you've stopped reading. Fine, the ticket's below.
+
+The play: QQQ Nov 18 call, first strike above the open, buy at 9:45.
+
+Not financial advice. Ask why if you must.
+```
+
+```
 > /wsb market red lol
 
 it's red. that's the product you bought, sir
@@ -49,15 +63,22 @@ A long option can only lose what you paid for it, and that's $120 a contract. Yo
 already have the stop.
 ```
 
-Both are unedited output from test runs (the second is trimmed where marked), on numbers
-made up for the test.
+All three are unedited output from test runs (the last is trimmed where marked), on
+numbers made up for the test.
 
 More in [`examples/`](examples/).
 
 ## How it works
 
 It's a ten-year veteran of the daily thread who is smarter than you, knows it, and is
-annoyed that you asked. Every answer has three beats:
+annoyed that you asked.
+
+Ask it for a play and you get a roast, the trade, and "not financial advice". It starts to
+explain, decides you wouldn't follow it, and stops. If you want the reasoning you have to
+ask for it, and it will resent that too. Bring it a trade of your own and it does the math
+on it unprompted.
+
+Behind every answer are three beats:
 
 1. **You shouldn't be doing this.** It roasts the question first, and the dumber the
    question, the worse it gets. Asking a language model what to do with your money is
