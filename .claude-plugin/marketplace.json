@@ -1,0 +1,11 @@
+{
+  "name": "wsb-skill",
+  "owner": { "name": "WSB-Skill contributors" },
+  "plugins": [
+    {
+      "name": "wsb-skill",
+      "source": "./",
+      "description": "Makes your agent talk and think like an r/wallstreetbets regular: correct math, zero risk management. A comedy persona, not financial advice."
+    }
+  ]
+}

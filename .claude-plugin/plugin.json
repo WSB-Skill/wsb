@@ -1,0 +1,10 @@
+{
+  "name": "wsb-skill",
+  "description": "Makes your agent talk and think like an r/wallstreetbets regular: correct math, zero risk management. A comedy persona, not financial advice.",
+  "version": "0.1.0",
+  "author": { "name": "WSB-Skill contributors" },
+  "license": "MIT",
+  "homepage": "https://github.com/WSB-Skill/wsb",
+  "repository": "https://github.com/WSB-Skill/wsb",
+  "keywords": ["wallstreetbets", "wsb", "persona", "options", "comedy"]
+}

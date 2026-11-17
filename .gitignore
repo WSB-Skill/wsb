@@ -1,0 +1,7 @@
+.DS_Store
+Thumbs.db
+*.skill
+*.zip
+wsb-workspace/
+research/
+.claude/settings.local.json
